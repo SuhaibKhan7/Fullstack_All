@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <style>
+    :root {
+      --bg: white;
+      --text: black;
+      --card: #f0f0f0;
+    }
+
+    body.dark {
+      --bg: #1e1e1e;
+      --text: white;
+      --card: #2e2e2e;
+    }
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: 0.3s;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      grid-template-rows: 60px 1fr;
+      grid-template-areas:
+        "sidebar header"
+        "sidebar main";
+      height: 100vh;
+    }
+
+    header {
+      grid-area: header;
+      background: var(--card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      font-weight: bold;
+    }
+
+    .sidebar {
+      grid-area: sidebar;
+      background: var(--card);
+      padding: 20px;
+    }
+
+    .main {
+      grid-area: main;
+      padding: 20px;
+      background: var(--bg);
+    }
+
+    .card {
+      background: var(--card);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+    button.theme-toggle {
+      padding: 6px 12px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="sidebar">
+    <h3>Dashboard</h3>
+    <ul>
+      <li>Home</li>
+      <li>Users</li>
+      <li>Settings</li>
+    </ul>
+  </div>
+
+  <header>
+    Admin Panel
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+  </header>
+
+  <div class="main">
+    <div class="card">Total Users: 120</div>
+    <div class="card">Active Sessions: 34</div>
+    <div class="card">Server Status: ✅ Online</div>
+  </div>
+</div>
+
+<script>
+  function toggleTheme() {
+    document.body.classList.toggle('dark');
+  }
+</script>
+
+</body>
+</html>
