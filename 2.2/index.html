@@ -1,33 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProductFilter</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Filter exp2.2</title>
+    <style>
+        .product{
+            background-color: rgb(137, 137, 233);
+            color: rgb(1, 1, 1);
+            width: 300px;
+        }
+    </style>
+  </head>
+  <body>
     <select id="filterlist">
-        <option value="all" >ALL</option>
-        <option value="electronics">Electronics</option>
-        <option value="clothes">Clothes</option>
-        <option value="books"/>Books</select> 
+      <option value="all">All</option>
+      <option value="electronics">Electronics</option>
+      <option value="books">Books</option>
+      <option value="clothes">Clothes</option>
     </select>
-<div id="productlist">
-    
-</div>
+    <div id="productlist"></div>
 
-<script>
-   const products = [
-        { name: "TMobile", category: "electronics" },
-        { name: "DLaptop", category: "electronics" },
-        { name: "Shirt", category: "clothing" },
-        { name: "Pants", category: "clothing" },
+    <script>
+      const products = [
+        { name: "Laptop", category: "electronics" },
+        { name: "Smartphone", category: "electronics" },
         { name: "Novel", category: "books" },
-        { name: "Textbook", category: "books" },
+        { name: "T-shirt", category: "clothes" },
+        { name: "Headphones", category: "electronics" },
+        { name: "Cookbook", category: "books" },
+        { name: "Jeans", category: "clothes" },
       ];
-
-
-    
-</script>
-</body>
+      const productList = document.getElementById("productlist");
+      function renderProducts() {
+        products.map((p) => {
+          const div = document.createElement("div");
+          div.className="product"
+          div.innerHTML = `<h3>${p.name}</h3> <p>${p.category}</p>`;
+          productList.appendChild(div);
+        });
+      }
+      renderProducts();
+    </script>
+  </body>
 </html>
