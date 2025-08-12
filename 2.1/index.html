@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LiveCharCounter</title>
+  </head>
+  <body>
+    <textarea rows="20" cols="60" id="txtarea"  oninput="printCount()">
+    </textarea>
+    <h3 id="dc">Total character :0</h3>
+<script>
+function printCount(){
+  let text=document.getElementById("txtarea").value;
+  let count=text.length
+  document.getElementById("dc").innerText="Total characters :"+count;
+}
+</script>
+
+
+
+
+  </body>
+</html>
