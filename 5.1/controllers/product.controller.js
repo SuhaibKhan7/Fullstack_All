@@ -1,73 +1,72 @@
-const Student = require('../models/student.model');
+const products = require('../models/products.models');
 
-// Create student
-const createStudent = async (req, res) => {
+// Create product
+const createProduct = async (req, res) => {
     try {
-        const student = new Student(req.body);
-        await student.save();
-        res.status(201).send(student);
+        const product = new products(req.body);
+        await product.save();
+        res.status(201).send(product);
     } catch (err) {
         res.status(400).send(err.message);
     }
 };
 
-// Get all students
-const getStudents = async (req, res) => {
+// Get all products
+const getProducts = async (req, res) => {
     try {
-        const allStudents = await Student.find();
-        res.status(200).json(allStudents);
+        const allProducts = await products.find();
+        res.status(200).json(allProducts);
     } catch (err) {
         res.status(400).send(err.message);
     }
 };
 
-// Get one student by ID
-const getStudentById = async (req, res) => {
+// Get one product by ID
+const getProductById = async (req, res) => {
     try {
-        const student = await Student.findById(req.params.id);
-        if (!student) {
-            return res.status(404).send("Student not found");
+        const product = await products.findById(req.params.id);
+        if (!product) {
+            return res.status(404).send("Product not found");
         }
-        res.status(200).json(student);
+        res.status(200).json(product);
     } catch (err) {
         res.status(400).send(err.message);
     }
 };
 
-// Update student by ID
-const updateStudent = async (req, res) => {
+// Update product by ID
+const updateProduct = async (req, res) => {
     try {
-        const student = await Student.findByIdAndUpdate(
+        const product = await products.findByIdAndUpdate(
             req.params.id,
             req.body,
-            { new: true, runValidators: true } // important for returning updated doc
         );
-        if (!student) {
-            return res.status(404).send("Student not found");
+        if (!product) {
+            return res.status(404).send("Product not found");
         }
-        res.status(200).json(student);
+        res.status(200).json(product);
     } catch (err) {
         res.status(400).send(err.message);
     }
 };
 
-// Delete student by ID
-const deleteStudent = async (req, res) => {
+// Delete product by ID
+const deleteProduct = async (req, res) => {
     try {
-        const student = await Student.findByIdAndDelete(req.params.id);
-        if (!student) {
-            return res.status(404).send("Student not found");
+        const product = await products.findByIdAndDelete(req.params.id);
+        if (!product) {
+            return res.status(404).send("Product not found");
         }
-        res.status(200).send("Student deleted successfully");
+        res.status(200).send("Product deleted successfully");
     } catch (err) {
         res.status(400).send(err.message);
     }
 };
 
-module.exports = {
-    createStudent,
-    getStudents,
-    getStudentById,
-    updateStudent,
-    deleteStudent
+module.exports = { 
+    createProduct, 
+    getProducts, 
+    getProductById, 
+    updateProduct, 
+    deleteProduct 
 };

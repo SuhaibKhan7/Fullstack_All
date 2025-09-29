@@ -1,12 +1,12 @@
 const express = require('express');
 const connectDB = require('./db/db');
 const { 
-  createProduct, 
-  getProducts, 
-  getProductById, 
-  updateProduct, 
-  deleteProduct 
-} = require('./controllers/Student.controller');
+  createStudent, 
+  getStudents, 
+  getStudentById, 
+  updateStudent, 
+  deleteStudent 
+} = require('../controllers/student.controller');
 
 const app = express();
 const port = 3000;
@@ -18,12 +18,12 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-// Product routes
-app.post('/products', createProduct);      // Create
-app.get('/products', getProducts);         // Get all
-app.get('/products/:id', getProductById);  // Get one by ID
-app.put('/products/:id', updateProduct);   // Update by ID
-app.delete('/products/:id', deleteProduct);// Delete by ID
+// Student routes
+app.post('/students', createStudent);       // Create
+app.get('/students', getStudents);          // Get all
+app.get('/students/:id', getStudentById);   // Get one
+app.put('/students/:id', updateStudent);    // Update
+app.delete('/students/:id', deleteStudent); // Delete
 
 // Start server
 app.listen(port, () => {
