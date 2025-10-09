@@ -13,6 +13,7 @@ const registerUser = async (req, res) => {
     await newUser.save();
     res.status(201).send("User registered successfully");
 }
+//write login controller
 const loginUser = async (req, res) => { 
     const { email, password } = req.body;
     const user = await Register.findOne({ email })
@@ -24,7 +25,7 @@ const loginUser = async (req, res) => {
         return res.status(400).send("Invalid credentials");
     }
 const secretkey="helloabchello"
-var token = jwt.sign({ id:user.email },secretkey , { expiresIn: '1h' });
+var token = jwt.sign({ email:user.email },secretkey , { expiresIn: '1h' });
     res.status(200).json({message: "Login successful", token: token });
 }
 
