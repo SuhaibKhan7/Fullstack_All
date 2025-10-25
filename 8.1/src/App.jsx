@@ -31,9 +31,9 @@ function App() {
 
   return (
     <>
-      <h1>Register Form</h1>
+      <h1>Login Form</h1>
       <form onSubmit={handleSubmit}>
-        <label>
+        {/* <label>
           Name:
           <input
             type="text"
@@ -42,7 +42,7 @@ function App() {
             onChange={(e) => setName(e.target.value)}
             required
           />
-        </label>
+        </label> */}
 
         <label>
           Email:
@@ -66,7 +66,7 @@ function App() {
           />
         </label>
 
-        <label>
+        {/* <label>
           Balance:
           <input
             type="number"
@@ -75,7 +75,7 @@ function App() {
             onChange={(e) => setBalance(e.target.value)}
             required
           />
-        </label>
+        </label> */}
 
         <input type="submit" value="Submit" />
       </form>
