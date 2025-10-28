@@ -1,0 +1,35 @@
+# ---------- Stage 1: Build the React app ----------
+FROM node:18-alpine AS build
+
+# Set working directory
+WORKDIR /app
+
+# Copy package.json files
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the project
+COPY . .
+
+# Build the React app for production
+RUN npm run build
+
+
+
+# ---------- Stage 2: Serve app with Nginx ----------
+FROM nginx:alpine
+
+# Copy the React build files from previous stage
+COPY --from=build /app/dist /usr/share/nginx/html
+
+# Expose port 80
+EXPOSE 80
+
+# Start Nginx server
+CMD ["nginx", "-g", "daemon off;"]
+# commands to build the Docker image:
+# docker build -t my-react-app .
+# commands to run the Docker container:
+# docker run -d -p 3000:80 my-react-app
